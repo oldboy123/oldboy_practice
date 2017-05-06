@@ -1,13 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import os
-import sys
-print(os.path.abspath(__file__))
-
 import getpass
-#import re
 
-"""By xuzhigui"""
 
 f = open('db', 'rU')
 users_info = f.read()
@@ -49,13 +43,13 @@ over_while = True
 while over_while:
     username = input("请输入用户名信息:")
 
-    if username in users_info_dict.keys():
+    if username.strip() in users_info_dict.keys():
         user_info = users_info_dict[username]
         pwd = users_info_dict[username][0]
         times = users_info_dict[username][1]
         if int(times) != 0:
-            password = input("请输入密码:")
-            if password == pwd:
+            password = getpass.getpass("请输入密码:")
+            if password.strip() == pwd.strip():
                 print("登录成功，欢迎！")
                 users_info_dict[username][1] = '3'
                 over_while = False
