@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""By xuzhigui"""
+
+
 import math
 
 class Structure1(object):

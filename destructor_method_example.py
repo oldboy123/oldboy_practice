@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""By xuzhigui"""
+
+
 from os.path import join
 
 class FileObject(object):
