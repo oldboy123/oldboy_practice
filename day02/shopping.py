@@ -101,10 +101,9 @@ if __name__ == "__main__":
             while True:
                 shop_num = input("请输入你要购买的商品序号: ")
                 try:
-                    try:
-                        money = money[1]
-                    except TypeError:
-                        money = money
+                    money = money[1]
+                except TypeError:
+                    money = money
                     money, status = check_is_shop_success(money, shop_num)
                     if status:
                         already_shop.append(all_sales_shop[shop_num][0])
