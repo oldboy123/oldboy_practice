@@ -8,16 +8,6 @@ import fcntl
 import struct
 from contextlib import closing
 import Queue
-#try:
-#    import sms_alert as Sendsms
-#except:
-#    lib_dir = "{}/{}".format(os.getcwd(), "lib")
-#    os.sys.path.append(lib_dir)
-#    import sms_alert as Sendsms
-
-def Alert_do(mob,message):
-    os.system("python /usr/local/innotree_monitor/script/lib/sms_alert.py {0} '{1}'".format(mob, message))
-
 
 def check_port(*args):
     q, host, port = args
@@ -27,9 +17,7 @@ def check_port(*args):
                 break
             else:
                 if i == 2:
-                    #print "test {0}".format(threading.current_thread().name)
                     q.put(port)
-                    #return port
 
 
 def get_interface_ip(ifname):
@@ -59,7 +47,6 @@ if __name__ == "__main__":
 
     jobs = []
     for port in TCP_PORT:
-        #p = threading.Thread(target=lambda q, arg1: q.put(check_port(arg1)), args=(que, (TCP_IP, port)))
         p = threading.Thread(target=check_port, args=(que, TCP_IP, port))
         jobs.append(p)
 
@@ -71,4 +58,4 @@ if __name__ == "__main__":
 
     for i in xrange(que.qsize()):
         msg = "TCP port {} down !".format(que.get())
-        Alert_do("13552424853", msg)
+        print msg
